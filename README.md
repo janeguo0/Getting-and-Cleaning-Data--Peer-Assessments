@@ -1,4 +1,8 @@
-Getting-and-Cleaning-Data--Peer-Assessments
-===========================================
+enter into R console mode
+>
 
-Peer Assessments
+copy the whole code
+paste next to the command prompt(>)
+then click the enter key
+
+is done!
