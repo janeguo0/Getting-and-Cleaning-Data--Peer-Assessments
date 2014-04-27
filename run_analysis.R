@@ -96,6 +96,11 @@ activity<-gsub("\\.","",activity)
 
 dataset<-data.frame(t,row.names=NULL)
 
+names<-names(dataset)
+names<-paste("Ave",names,sep="")
+names(dataset)<-names
+
+
 dataset$subject<-as.factor(subject)
 dataset$activity<-as.factor(activity)
 
@@ -104,7 +109,9 @@ dataset$activity<-as.factor(activity)
 data<-data.frame(dataset[,80:81],dataset[,1:79])
 
 
-write.table(data,file="dataf.txt")
-write.csv(data,file="dataf.csv")
+write.table(data,file="dataSet.txt")
+write.csv(data,file="dataSet.csv")
+
+
 
 
