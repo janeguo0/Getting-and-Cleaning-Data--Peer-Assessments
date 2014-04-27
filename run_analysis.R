@@ -22,10 +22,10 @@ datas<-rbind(trains,tests)
 datal<-rbind(trainl,testl)
 
 datas$subject<-as.character(datas[,1])
-datas$subject<-as.factor(datas[,2])
+
 
 datal$activity<-as.character(datal[,1])
-datal$activity<-as.factor(datal[,2])
+
 
 datal[,2]<-gsub("1","WALKING",datal[,2])
 datal[,2]<-gsub("2","WALKING_UPSTAIRS",datal[,2])
@@ -35,7 +35,7 @@ datal[,2]<-gsub("5","STANDING",datal[,2])
 datal[,2]<-gsub("6","LAY",datal[,2])
 
 
-datal$activity<-as.factor(datal[,2])
+
 
 datall<-cbind(data,datas[,2],datal[,2])
 
@@ -69,7 +69,7 @@ fdata$activity<-as.character(fdata$activity)
 index<-order(fdata$subject,fdata$activity)
 fdata<-fdata[index,]
 
-#########################umeri##############
+#######################################
 fdata$activity<-as.factor(fdata$activity)
 
 
@@ -84,4 +84,27 @@ snames<-snames[1:79]
 
 ff<-sapply(s,function(x) colSums(x[,snames])/dim(x)[1])
 
-write.table(ff,file="datasetok.txt")
+
+t<-t(ff)
+
+rownames<-rownames(t)
+subject<-substr(rownames,1,2)
+subject<-gsub("\\.","",subject)
+
+activity<-substr(rownames,3,length(rownames))
+activity<-gsub("\\.","",activity)
+
+dataset<-data.frame(t,row.names=NULL)
+
+dataset$subject<-as.factor(subject)
+dataset$activity<-as.factor(activity)
+
+
+
+data<-data.frame(dataset[,80:81],dataset[,1:79])
+
+
+write.table(data,file="dataf.txt")
+write.csv(data,file="dataf.csv")
+
+
