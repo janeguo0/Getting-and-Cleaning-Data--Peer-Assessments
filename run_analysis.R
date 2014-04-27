@@ -109,8 +109,8 @@ dataset$activity<-as.factor(activity)
 data<-data.frame(dataset[,80:81],dataset[,1:79])
 
 
-write.table(data,file="dataSet.txt")
-write.csv(data,file="dataSet.csv")
+write.table(data,file="dataset.txt")
+write.csv(data,file="dataset.csv")
 
 
 
